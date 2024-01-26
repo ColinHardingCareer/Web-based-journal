@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Journal</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/journal/store" method="post">
+      <label for="entry">Your journal entry: </label>
+      <br />
+      <textarea cols="80" id="entry" name="entry"></textarea>
+      <br />
+      <input type="submit" value="Submit journal entry" />
+    </form>
+    <ul>
+      <%
+	for (row of rows) {
+	%>
+      <li>[<span style="font-style:italic"><%= new Date(row.timestamp*1000).toLocaleString() %></span>]
+	<%= row.entry %></li>
+      <%
+	}
+	%>
+    </ul>
+  </body>
+</html>
